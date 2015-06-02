@@ -1,17 +1,16 @@
 // JavaScript Document
 $(document).ready(function(e) {
 document.addEventListener("deviceready",function(){
-	audio= windows.plugins.Lowlatencyaudio;
-	audio.preloadFX ('b1','audio/C.mp3',function(){}, function(msg){ alerti ("Error " + msg);});
+	audio = window.plugins.LowLatencyAudio;
+	audio.preloadFX ('B1','audio/C.mp3',function(){}, function(msg){ alert ("Error " + msg);});
 	
-	audio.preloadFX ('b2','audio/D.mp3',function(){}, function(msg){ alerti ("Error " + msg);});
+	audio.preloadFX ('B2','audio/D.mp3',function(){}, function(msg){ alert ("Error " + msg);});
 	
-	audio.preloadFX ('b3','audio/E.mp3',function(){}, function(msg){ alerti ("Error " + msg);});
+	audio.preloadFX ('B3','audio/E.mp3',function(){}, function(msg){ alert ("Error " + msg);});
 	
-	audio.preloadFX ('b4','audio/F.mp3',function(){}, function(msg){ alerti ("Error " + msg);});
+	audio.preloadFX ('B4','audio/F.mp3',function(){}, function(msg){ alert ("Error " + msg);});
 	
 $('#btnjugar').on ('tap',function(){
-
 	var pantalla=$.mobile.getScreenHeight();
 	var encabezado=$('.ui-header').outerHeight();
 	var pie=$('.ui-footer').outerHeight();
@@ -37,17 +36,17 @@ $('.cuadro').on ('vmousedown', function(){
 	$(this).removeClass('pulsado');	
     });	
 	
-});//cuadro
+
 
 function quien(q)
 { 
-audio.play (q);
+audio.play(q);
 return q.substring(1);
 }
 
 	
 	
 	
-
+});//cuadro
 });
 
