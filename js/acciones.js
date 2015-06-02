@@ -1,6 +1,15 @@
 // JavaScript Document
 $(document).ready(function(e) {
-//document.addEventListener("deviceready",function(){
+document.addEventListener("deviceready",function(){
+	audio= windows.plugins.Lowlatencyaudio;
+	audio.preloadFX ('b1','audio/C.mp3',function(){}, function(msg){ alerti ("Error " + msg);});
+	
+	audio.preloadFX ('b2','audio/D.mp3',function(){}, function(msg){ alerti ("Error " + msg);});
+	
+	audio.preloadFX ('b3','audio/E.mp3',function(){}, function(msg){ alerti ("Error " + msg);});
+	
+	audio.preloadFX ('b4','audio/F.mp3',function(){}, function(msg){ alerti ("Error " + msg);});
+	
 $('#btnjugar').on ('tap',function(){
 
 	var pantalla=$.mobile.getScreenHeight();
@@ -32,6 +41,7 @@ $('.cuadro').on ('vmousedown', function(){
 
 function quien(q)
 { 
+audio.play (q);
 return q.substring(1);
 }
 
@@ -39,5 +49,5 @@ return q.substring(1);
 	
 	
 
-//});
+});
 
