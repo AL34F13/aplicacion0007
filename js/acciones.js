@@ -1,6 +1,9 @@
 // JavaScript Document
 $(document).ready(function(e) {
 document.addEventListener("deviceready",function(){
+	
+	var BaseDatos= window.sgqlitePlugin.openDataBasebase({name: "coloresBD.db", createFromLocation:1});
+	
 	audio = window.plugins.LowLatencyAudio;
 	audio.preloadFX ('B1','audio/C.mp3',function(){}, function(msg){ alert ("Error " + msg);});
 	
