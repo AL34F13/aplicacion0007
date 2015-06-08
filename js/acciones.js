@@ -47,7 +47,17 @@ audio.play(q);
 return q.substring(1);
 }
 
-	
+function cargarnombrejugador ()
+{
+ basedatos.transaction(function(ejecutar){
+	var sql="SELECT NombreUsuario FROM Usuarios";
+	ejecutar.executeSql(sql,undefined,
+	 function (ejecutar,resultado){
+		var datosJugador = resultados.row.item(0);
+		$('#jugador').text(datosJugador.NombreUsuario); 
+	 });
+ });
+}	
 	
 	
 });//cuadro
