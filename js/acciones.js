@@ -1,7 +1,7 @@
 // JavaScript Document
 $(document).ready(function(e) {
 document.addEventListener("deviceready",function(){
-	
+cargarnombrejugador();	
 	var BaseDatos= window.sgqlitePlugin.openDataBasebase({name: "coloresBD.db", createFromLocation:1});
 	
 	audio = window.plugins.LowLatencyAudio;
