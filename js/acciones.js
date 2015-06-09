@@ -1,19 +1,36 @@
 // JavaScript Document
 $(document).ready(function(e) {
 document.addEventListener("deviceready",function(){
-cargarnombrejugador();	
-	var BaseDatos= window.sgqlitePlugin.openDataBasebase({name: "coloresBD.db", createFromLocation:1});
+	var basedatos= window.sqlitePlugin.openDatabase ({name: "ColoresBD.db", createFromLocation:1});
+	cargarnombrejugador();
+	function cargarnombrejugador()
+	{
+		basedatos.transaction (function (ejecutar){
+			var sql="SELECT NombreUsuario FROM Usuario";
+			ejecutar. executeSql (sql, undefined,function(ejecutar, resultado){
+				var datosJugador=resultado.rows.item(0);
+				$('#jugador').text(datosJugador.NombreUsuario);
 	
-	audio = window.plugins.LowLatencyAudio;
-	audio.preloadFX ('B1','audio/C.mp3',function(){}, function(msg){ alert ("Error " + msg);});
 	
-	audio.preloadFX ('B2','audio/D.mp3',function(){}, function(msg){ alert ("Error " + msg);});
-	
-	audio.preloadFX ('B3','audio/E.mp3',function(){}, function(msg){ alert ("Error " + msg);});
-	
-	audio.preloadFX ('B4','audio/F.mp3',function(){}, function(msg){ alert ("Error " + msg);});
-	
+	});
+	});
+	}
+	$('#btnajustes').on('tap',function(){
+	$('#txtnombre').val($('#jugador').text());
+	});
+	$('#btnguardar').on('tap',function(){
+		var nuevonombre=$('#txtnombre').val();
+		basedatos.transaction(function(consulta){
+		consulta.executeSql("UPDATE Usuario SET NombreUsuario=? WHERE ClaveUsuario='1';",[nuevonombre]);
+		});
+	});
+	audio=window.plugins.LowLatencyAudio;
+	audio.preloadFX('B1', 'audio/C.mp3', function(){}, function(msg){alert ("Error " + msg);});
+	audio.preloadFX('B2', 'audio/D.mp3', function(){}, function(msg){alert ("Error " + msg);});
+	audio.preloadFX('B3', 'audio/E.mp3', function(){}, function(msg){alert ("Error " + msg);});
+	audio.preloadFX('B4', 'audio/F.mp3', function(){}, function(msg){alert ("Error " + msg);});
 $('#btnjugar').on ('tap',function(){
+
 	var pantalla=$.mobile.getScreenHeight();
 	var encabezado=$('.ui-header').outerHeight();
 	var pie=$('.ui-footer').outerHeight();
@@ -31,35 +48,25 @@ $('#btnjugar').on ('tap',function(){
 
 
 $('.cuadro').on ('vmousedown', function(){
+	$('#pantalla').append (quien ($(this).attr('id')));
 	$(this).addClass('pulsado');
-	$('#pantalla').append(quien($(this).attr('id')));	
+		
     });	
+	
 	
 	$('.cuadro').on ('vmouseup', function(){
 	$(this).removeClass('pulsado');	
     });	
 	
-
-
-function quien(q)
-{ 
-audio.play(q);
-return q.substring(1);
-}
-
-function cargarnombrejugador ()
-{
- basedatos.transaction(function(ejecutar){
-	var sql="SELECT NombreUsuario FROM Usuarios";
-	ejecutar.executeSql(sql,undefined,
-	 function (ejecutar,resultado){
-		var datosJugador = resultados.row.item(0);
-		$('#jugador').text(datosJugador.NombreUsuario); 
-	 });
- });
-}	
 	
-	
+	function quien (q)
+ {
+	 audio.play(q);
+	 return q.substring(1);
+ }
+
 });//cuadro
+
+ 
 });
 

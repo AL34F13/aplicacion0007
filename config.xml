@@ -5,14 +5,14 @@
      id    = "com.phonegap.colores"  
      version  = "1.0.0">  
 	 
-   <name>Colores</name>  
+   <name> Fernanda </name>  
    
    <description>  
-     Juego de colores, con colores
+     Colores
    </description>  
    
    <author href="https://build.phonegap.com" email="micorreo@gmail.com">  
-       Jose Roberto Ramirez Perez
+      Fernanda
    </author>  
    
    <!-- Personaliza la aplicacion y plataforma  -->  
