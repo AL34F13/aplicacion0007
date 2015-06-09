@@ -13,6 +13,7 @@ document.addEventListener("deviceready",function(){
 	
 	
 	});
+	cargarnombrejugador();
 	});
 	}
 	$('#btnajustes').on('tap',function(){
