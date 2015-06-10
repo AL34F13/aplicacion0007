@@ -25,6 +25,20 @@ document.addEventListener("deviceready",function(){
 		consulta.executeSql("UPDATE Usuario SET NombreUsuario=? WHERE ClaveUsuario='1';",[nuevonombre]);
 		});
 	});
+function flash (boton){
+	boton.stop().animate({opacity:'0.5'},{
+		duration:80,
+		complete:function(){
+			boton.stop().animate({opacity:'1'},
+			200);
+		}
+	});
+}
+
+$('.cuadro').on('tap',function (){
+		flash($(this) );
+		audio.play( );
+});
 	audio=window.plugins.LowLatencyAudio;
 	audio.preloadFX('B1', 'audio/C.mp3', function(){}, function(msg){alert ("Error " + msg);});
 	audio.preloadFX('B2', 'audio/D.mp3', function(){}, function(msg){alert ("Error " + msg);});
